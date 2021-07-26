@@ -16,7 +16,7 @@ Network Address
 
 Broadcast
 
-Max conection os host
+Number of Hosts
 
 First and Last IP on host
 
