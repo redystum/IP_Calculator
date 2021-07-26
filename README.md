@@ -2,7 +2,9 @@
 
 This project is under development!!!
 
-Run calc.py and type any ip to see:
+The objective of this project is to create an ip calculator with a simple code that all programmers who know the basics of python can understand to improve their studies.
+
+# Features
 
 IP Class (A, B, C, D, E)
 
