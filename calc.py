@@ -126,9 +126,9 @@ def screen_out():
     ip_binar = binar()
     ip_out.set(ip_input.get())
     ip_binary_out.set(ip_binar)
-    # network
+    # Network
     
-    # mask
+    # Mask
     netmask_bin = Mask()
     netmask_bin = netmask_bin.replace(" ","").replace("'","").replace(",","").replace("[","").replace("]","")
     mask_binary_out.set(netmask_bin)
@@ -137,9 +137,9 @@ def screen_out():
     # class
     ip_class = class_ip(ip_binar)
     class_out.set(ip_class)
-    # broadcast
+    # Broadcast
 
-    # 1host
+    # First Host
 
     # last host
 
@@ -155,8 +155,7 @@ font_title = ("Calibri", 20, "normal")
 font_slash = ("Calibri", 15, "normal")
 
 # Displayed title on window
-title = Label(root, text="IP Calculator", font=font_title, bg='#2e2e2e', fg="white").place(
-    x=250, y=20, anchor="center")
+title = Label(root, text="IP Calculator", font=font_title, bg='#2e2e2e', fg="white").place(x=250, y=20, anchor="center")
 
 # Alignments to make the window more beauty
 alignment = Label(root, text=" ", bg='#2e2e2e').grid(row=0, column=0)
