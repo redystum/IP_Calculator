@@ -13,25 +13,39 @@ root.title("IP Calcualtor")
 def validate():
     ip = ip_input.get()
     mask = mask_input.get()
-    mask = int(mask)
     ip_regex = "^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$"
-
-    if re.search(ip_regex, ip):
-        if mask < 32 or mask > 1:
-            screen_out()
-        else:
-            out = Label(root, text="Enter a valid Mask")
-            out.place(x=250, y=80, anchor="center")
-            mask_input.delete(0, END)
-    else:
-        if mask > 32 or mask < 1:
-            out1 = Label(root, text="Enter a valid IP and Mask")
-            out1.place(x=250, y=110, anchor="center")
+    
+    try:
+        int(mask)
+    except ValueError:
+        if (re.search(ip_regex, ip)) == None:
+            validate_var.set("Enter a valid IP and Mask")
             ip_input.delete(0, END)
             mask_input.delete(0, END)
         else:
-            out2 = Label(root, text="Enter a valid IP")
-            out2.place(x=250, y=100, anchor="center")
+            validate_var.set("Enter a valid Mask")
+            mask_input.delete(0, END)
+        
+    mask = int(mask)
+
+    
+
+    if re.search(ip_regex, ip):
+        if mask > 32 or mask < 1:
+            #screen_out()
+            validate_var.set("Enter a valid Mask")
+            mask_input.delete(0, END)
+        else:
+            screen_out()
+            # validate_var.set("Enter a valid Mask")
+            # mask_input.delete(0, END)
+    else:
+        if mask > 32 or mask < 1:
+            validate_var.set("Enter a valid IP and Mask")
+            ip_input.delete(0, END)
+            mask_input.delete(0, END)
+        else:
+            validate_var.set("Enter a valid IP")
             ip_input.delete(0, END)
 
 
@@ -42,7 +56,7 @@ def binar():
     for i in range(0, 4):
         num[i] = int(num[i])
         i = i + 1
-
+    
     i = 0
     for i in range(0, 4):
         n[i] = bin(num[i])[2:]
@@ -125,19 +139,25 @@ alignment = Label(root, text=" ").grid(row=1, column=0)
 alignment = Label(root, text="        ").grid(row=2, column=0)
 
 # Local to write your IP
-ip_input = Entry(root, width=50)
+ip_input = Entry(root, width=50, text="IP")
 ip_input.grid(row=2, column=1)
 
 # Slash for separate IP to the Mask
 slash = Label(root, text="/", font=font_slash).grid(row=2, column=3)
 
+validate_var = StringVar()
+
+validate_var.set("Enter an IP and Mask")
 # Local to write your Mask
-mask_input = Entry(root, width=20)
+mask_input = Entry(root, width=20, text="Mask")
 mask_input.grid(row=2, column=4)
 
+oute = Entry(root, textvariable=validate_var, state=DISABLED, width=30, justify = CENTER)
+oute.place(x=250, y=81, anchor="center")
+
 # Button to convert
-button = Button(root, text="Calculate", command=validate).place(
-    x=250, y=90, anchor="center")
+button = Button(root, text="Calculate", command=validate, ).place(
+    x=250, y=110, anchor="center")
 
 # For the window to always be updated
 root.mainloop()
