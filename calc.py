@@ -199,7 +199,7 @@ def last_host(broadcast):
     broadcast = broadcast.split("/")
     broadcast = broadcast[0].split(".")
     broadcast[3] = int(broadcast[3])
-    broadcast[3] = broadcast[3] - 1   # THIS LINE DONT WORK, IDK WHY
+    broadcast[3] = broadcast[3] - 1
     last = broadcast
     last = str(last)
     last = last.replace(" ","").replace("'","").replace(",",".").replace("[","").replace("]","")
@@ -264,9 +264,9 @@ def screen_out():
     first_binary_out.set(first_binar)
 
     # last on host
-    last = fist_host(broadcast)
+    last = last_host(broadcast)
     last_out.set(last)
-    last_binar = first_bin(last)
+    last_binar = last_bin(last)
     last_binary_out.set(last_binar)
 
     # Hosts
