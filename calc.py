@@ -58,7 +58,7 @@ def binar():
     
     i = 0
     for i in range(0, 4):
-        n[i] = bin(num[i])[2:]
+        n[i] = bin(num[i])[2:].zfill(8)
         i = i + 1
 
     ip_binar = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
@@ -78,11 +78,38 @@ def network_bin(network_num):
     i = 0
     n = ["", "", "", ""]    
     for i in range(0, 4):
-        n[i] = bin(int(network[i]))[2:]
+        n[i] = bin(int(network[i]))[2:].zfill(8)
         i = i + 1
 
     network_binar = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
     return network_binar
+
+# Class
+def class_ip(ip_binar):
+    classA = IPv4Network(("10.0.0.0", "255.0.0.0"))
+    classB = IPv4Network(("172.16.0.0", "255.240.0.0"))
+    classC = IPv4Network(("192.168.0.0", "255.255.0.0"))
+
+    ip = IPv4Address(ip_input.get())
+
+    if ip in classA:
+        ip_class = "A - Private"
+    elif ip in classB:
+        ip_class = "B - Private"
+    elif ip in classC:
+        ip_class = "C - Private"
+    elif ip_binar.startswith('0'):
+        ip_class = "A - Public"
+    elif ip_binar.startswith('10'):
+        ip_class = "B - Public"
+    elif ip_binar.startswith('110'):
+        ip_class = "C - Public"
+    elif ip_binar.startswith('1110'):
+        ip_class = "D - Public"
+    else:
+        ip_class = "E - Public"
+
+    return ip_class
 
 # Mask
 def Mask():
@@ -119,33 +146,6 @@ def mask_bin_covertion(netmask_bin):
     netmask = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
     return netmask
 
-# Class
-def class_ip(n):
-    classA = IPv4Network(("10.0.0.0", "255.0.0.0"))
-    classB = IPv4Network(("172.16.0.0", "255.240.0.0"))
-    classC = IPv4Network(("192.168.0.0", "255.255.0.0"))
-
-    ip = IPv4Address(ip_input.get())
-
-    if ip in classA:
-        ip_class = "A - Private"
-    elif ip in classB:
-        ip_class = "B - Private"
-    elif ip in classC:
-        ip_class = "C - Private"
-    elif n[0].startswith('0'):
-        ip_class = "A - Public"
-    elif n[0].startswith('10'):
-        ip_class = "B - Public"
-    elif n[0].startswith('110'):
-        ip_class = "C - Public"
-    elif n[0].startswith('1110'):
-        ip_class = "D - Public"
-    else:
-        ip_class = "E - Public"
-
-    return ip_class
-
 # Broadcast
 def broadcast_calc():
     ip = f"{ip_input.get()}/{int(mask_input.get())}"
@@ -161,7 +161,7 @@ def broadcast_bin(broadcast):
     n = ["", "", "", ""]
     i = i + 1
     for i in range(0, 4):
-        n[i] = bin(int(num[i]))[2:]
+        n[i] = bin(int(num[i]))[2:].zfill(8)
         i = i + 1
     broadcast_binar = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
     return broadcast_binar
@@ -188,7 +188,7 @@ def first_bin(first):
     n = ["", "", "", ""]
     i = i + 1
     for i in range(0, 4):
-        n[i] = bin(int(num[i]))[2:]
+        n[i] = bin(int(num[i]))[2:].zfill(8)
         i = i + 1
     first_binar = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
     return first_binar
@@ -212,7 +212,7 @@ def last_bin(last):
     n = ["", "", "", ""]
     i = i + 1
     for i in range(0, 4):
-        n[i] = bin(int(num[i]))[2:]
+        n[i] = bin(int(num[i]))[2:].zfill(8)
         i = i + 1
     last_binar = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
     return last_binar
@@ -241,15 +241,15 @@ def screen_out():
     network_binar = network_bin(network_num)
     network_binary_out.set(network_binar)
 
+    # Class
+    ip_class = class_ip(ip_binar)
+    class_out.set(ip_class)
+
     # Mask
     netmask_bin = Mask()
     mask_binary_out.set(netmask_bin)
     netmask = mask_bin_covertion(netmask_bin)
     mask_out.set(netmask)
-
-    # Class
-    ip_class = class_ip(ip_binar)
-    class_out.set(ip_class)
 
     # Broadcast
     broadcast = broadcast_calc()
