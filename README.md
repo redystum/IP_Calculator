@@ -2,7 +2,10 @@
 
 This project is under development!!!
 
-The objective of this project is to create an ip calculator with a simple code that all programmers who know the basics of python can understand to improve their studies.
+The objective of this project is to create an ip calculator with a simple code so that I and all the programmers can understand... It's the first time I use python, if there are easier ways to do what I did... it's normal
+
+
+PS: I tried to use a minimum of libraries to be able to explore the language better...
 
 # Features
 
