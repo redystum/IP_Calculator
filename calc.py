@@ -199,7 +199,7 @@ def last_host(broadcast):
     broadcast = broadcast.split("/")
     broadcast = broadcast[0].split(".")
     broadcast[3] = int(broadcast[3])
-    broadcast[3] = broadcast[3] - 1 # THIS LINE DONT WORK, IDK WHY
+    broadcast[3] = broadcast[3] - 1   # THIS LINE DONT WORK, IDK WHY
     last = broadcast
     last = str(last)
     last = last.replace(" ","").replace("'","").replace(",",".").replace("[","").replace("]","")
@@ -247,7 +247,7 @@ def screen_out():
     netmask = mask_bin_covertion(netmask_bin)
     mask_out.set(netmask)
 
-    # class
+    # Class
     ip_class = class_ip(ip_binar)
     class_out.set(ip_class)
 
@@ -297,6 +297,7 @@ slash = Label(root, text="/", font=font_slash, bg='#2e2e2e', fg="white").grid(ro
 validate_var = StringVar()
 
 validate_var.set("Enter an IP and Mask")
+
 # Local to write your Mask
 mask_input = Entry(root, width=20, bg='#0f0f0f', fg="white")
 mask_input.grid(row=2, column=4)
@@ -399,5 +400,4 @@ out.place(x=55, y=440, anchor="center")
 out = Entry(root, textvariable=hosts_out, justify = CENTER, bg='#0f0f0f', fg="white")
 out.place(x=170, y=440, anchor="center")
 
-# For the window to always be updated
 root.mainloop()
