@@ -1,7 +1,5 @@
 # Ip_Calculator
 
-This project is under development!!!
-
 The objective of this project is to create an ip calculator with a simple code so that I and all the programmers can understand... It's the first time I use python, if there are easier ways to do what I did... it's normal
 
 
@@ -22,6 +20,3 @@ Broadcast
 Number of Hosts
 
 First and Last IP on host
-
-# Attention 
-it is normal that there are errors, the project is not finished!
