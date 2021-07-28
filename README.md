@@ -1,5 +1,7 @@
 # Ip_Calculator
 
+<img src="./gif/calc.gif"/>
+
 The objective of this project is to create an ip calculator with a simple code so that I and all the programmers can understand... It's the first time I use python, if there are easier ways to do what I did... it's normal
 
 
