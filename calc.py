@@ -3,6 +3,7 @@ import re
 from ipaddress import IPv4Address, IPv4Network
 import ipaddress
 
+# Create a Window
 root = Tk()
 
 root.geometry("500x500")
@@ -166,7 +167,7 @@ def broadcast_bin(broadcast):
     broadcast_binar = f"{n[0]}.{n[1]}.{n[2]}.{n[3]}"
     return broadcast_binar
 
-# First Host
+# First on Host
 def fist_host(network_num):
     network_num = str(network_num)
     network_num = network_num.split("/")
