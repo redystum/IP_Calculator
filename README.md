@@ -5,7 +5,7 @@ The objective of this project is to create an ip calculator with a simple code s
 
 PS: I tried to use a minimum of libraries to be able to explore the language better...
 
-<img src="./gif/calc.gif"/>
+<img src="./images/calc.gif"/>
 
 # Features
 
